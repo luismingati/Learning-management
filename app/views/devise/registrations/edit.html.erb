@@ -1,0 +1,29 @@
+<div class="flex w-full flex-col justify-center items-center">
+  <div class="flex flex-col md:w-1/2 justify-center py-10 items-center bg-white">
+    <h1 class="text-gray-800 font-bold text-2xl mb-3">Edit user</h1>
+    <h2 class="mb-4">Signed in as <b><%= current_user.email %></b></h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "bg-white") do |f|%>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation.</p>
+      <% end %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+        <%= f.email_field :email, class: "pl-2 outline-none border-none border-transparent focus:border-transparent focus:ring-0", placeholder: "Email address", autocomplete: "email", autofocus: true%>
+      </div>
+      <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+        <%= f.password_field :password, class: "pl-2 outline-none border-none border-transparent focus:border-transparent focus:ring-0", placeholder: "New password", autocomplete: "new-password", autofocus: true%>
+      </div>
+      <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+        <%= f.password_field :password_confirmation, class: "pl-2 outline-none border-none border-transparent focus:border-transparent focus:ring-0", placeholder: "Confirm new password", autocomplete: "new-password", autofocus: true%>
+      </div>
+      <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+        <%= f.password_field :current_password, class: "pl-2 outline-none border-none border-transparent focus:border-transparent focus:ring-0", placeholder: "Current password", autocomplete: "current-password", autofocus: true%>
+      </div>
+      <%= f.submit "Update", class: "block w-full bg-amaranth-600 hover:bg-amaranth-700 mt-4 py-3
+       rounded-2xl text-white-50 cursor-pointer font-semibold mb-2"%>
+       <div class="mt-6">
+        <%= render "devise/shared/links"%>
+      </div>
+    <% end %>
+  </div>
+</div>
